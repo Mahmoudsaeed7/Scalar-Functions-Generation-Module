@@ -1,6 +1,6 @@
 ﻿namespace ScalarFunctions
 {
-    partial class Form1
+    partial class Load
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // Load
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(641, 428);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(650, 434);
+            this.Name = "Load";
+            this.Text = "Load";
+            this.Load += new System.EventHandler(this.Load_Load);
             this.ResumeLayout(false);
 
         }
