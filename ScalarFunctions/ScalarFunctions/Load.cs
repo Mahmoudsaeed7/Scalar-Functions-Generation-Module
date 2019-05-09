@@ -30,7 +30,7 @@ namespace ScalarFunctions
             Function sumInt = new Function("SumI", rowsCount);
             Function sumDouble = new Function("SumD", rowsCount);
             List<Function> functions = new List<Function>();
-
+            List<Table> tables = new List<Table>();
             sumInt.setDataTypes("int");
             sumDouble.setDataTypes("double");
             functions.Add(sumInt);
@@ -46,13 +46,45 @@ namespace ScalarFunctions
             table.columns.Add(price);
             table.columns.Add(id);
 
+            tables.Add(table);
             FileStream fileStream = new FileStream("Tables.xml", FileMode.Create);
-            XmlSerializer ser = new XmlSerializer(table.GetType());
-            ser.Serialize(fileStream, table);
+            XmlSerializer ser = new XmlSerializer(tables.GetType());
+            ser.Serialize(fileStream, tables);
+            fileStream.Close();
             fileStream = new FileStream("Functions.xml", FileMode.Create);
             ser = new XmlSerializer(functions.GetType());
             ser.Serialize(fileStream, functions);
             fileStream.Close();
+        }
+
+        private void CB_TableName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<Table> TableData = new List<Table>();
+            Table table = new Table("Data");
+            XmlSerializer ser = new XmlSerializer(TableData.GetType());
+            FileStream fs = new FileStream("Tables.xml", FileMode.Open);
+            TableData = (List<Table>)ser.Deserialize(fs);      
+            foreach (Table T in TableData)
+            {
+                if (CB_TableName.SelectedItem.Equals(T.name))
+                {
+                    List<Column> C = T.columns;
+                    for (int i=0;i<T.columns.Count;i++)
+                    {
+                        string C_name = C[i].header;
+                        GridView_Table.Columns.Add(C_name,C_name);
+                        List<string> Str = C[i].values;
+                        for (int j=0;j< Str.Count;j++)
+                        {
+                            GridView_Table.Rows.Add();
+                            GridView_Table.Rows[j].Cells[i].Value=Str[j];
+                        }
+                    }
+                    break;
+                }
+
+            }
+            fs.Close();
         }
     }
 }
