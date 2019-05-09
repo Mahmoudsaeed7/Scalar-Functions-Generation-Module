@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
+using System.Xml;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
@@ -83,6 +85,35 @@ namespace ScalarFunctions
                      }
                 }
             return answer;
+        }
+
+        public int sumIntegers()
+        {
+            int sum = 0;
+            for (int i = 0; i < column.values.Count; i++)
+            {
+                    int value = int.Parse(column.values[i]);
+                    sum += value;
+            }
+            return sum;
+        }
+
+        public double sumDoubles()
+        {
+            double sum = 0.0;
+            for (int i = 0; i < column.values.Count; i++)
+            {
+                double value = double.Parse(column.values[i]);
+                sum += value;
+            }
+            return sum;
+        }
+
+        public int Count()
+        {
+            int valuesCount = 0;
+            valuesCount = column.values.Count;
+            return valuesCount;
         }
 
         public int MaxInt()
