@@ -115,5 +115,31 @@ namespace ScalarFunctions
             valuesCount = column.values.Count;
             return valuesCount;
         }
+
+        public int MinIntegers()
+        {
+            int minValue = int.Parse(column.values[0]);
+            for (int i = 0; i < column.values.Count; i++)
+            {
+                if (int.Parse(column.values[i]) < minValue)
+                {
+                    minValue = int.Parse(column.values[i]);
+                }
+            }
+            return minValue;
+        }
+
+        public double MinDoubles()
+        {
+            double minValue = double.Parse(column.values[0]);
+            for (int i = 0; i < column.values.Count; i++)
+            {
+                if (double.Parse(column.values[i]) <= minValue)
+                {
+                    minValue = double.Parse(column.values[i]);
+                }
+            }
+            return minValue;
+        }
     }
 }
