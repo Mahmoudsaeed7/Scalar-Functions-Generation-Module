@@ -84,6 +84,33 @@ namespace ScalarFunctions
                 }
             return answer;
         }
-           
+
+        public int MaxInt()
+        {
+            int max = int.Parse(column.values[0]);
+            for(int i = 0; i < column.values.Count; i++)
+            {
+                int value = int.Parse(column.values[i]);
+                if (value > max)
+                {
+                    max = value;
+                }
+            }
+            return max;
+        }
+        public double MaxDouble()
+        {
+            double max = double.Parse(column.values[0]);
+            for (int i = 0; i < column.values.Count; i++)
+            {
+                double value = double.Parse(column.values[i]);
+                if (value > max)
+                {
+                    max = value;
+                }
+            }
+            return max;
+        }
+
     }
 }
