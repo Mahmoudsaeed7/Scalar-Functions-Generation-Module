@@ -21,6 +21,8 @@ namespace ScalarFunctions
 
         private void Load_Load(object sender, EventArgs e)
         {
+            PassData.colIndex.Clear();
+            PassData.colName.Clear();
             if (!File.Exists("Tables.xml") && !File.Exists("Functions.xml"))
             {
                 Random random = new Random();
@@ -36,6 +38,7 @@ namespace ScalarFunctions
                 Column startYear = new Column("Start Year", "int");
                 Column profit = new Column("Profit", "double");
                 Column employees = new Column("Employees/Department", "int");
+                Column Year = new Column("Model Year", "int");
 
                 Function sumInt = new Function("SumInt", rowsCount);
                 Function sumDouble = new Function("SumDouble", rowsCount);
@@ -67,8 +70,9 @@ namespace ScalarFunctions
                     startYear.values.Add(random.Next(1990, 2015).ToString());
                     profit.values.Add(Math.Round(random.NextDouble() * 1234567, 3).ToString());
                     employees.values.Add(random.Next(1000, 10000).ToString());
+                    Year.values.Add(random.Next(1998, 2019).ToString());
                 }
-                table.columns.AddRange(new List<Column>() { price , id });
+                table.columns.AddRange(new List<Column>() { price , id, Year });
                 table2.columns.AddRange(new List<Column>() { compName, startYear, profit, employees });
 
                 tables.Add(table);
@@ -88,7 +92,6 @@ namespace ScalarFunctions
         private void CB_TableName_SelectedIndexChanged(object sender, EventArgs e)
         {
             PassData.tableName = CB_TableName.SelectedItem.ToString();
-            selectBtn.Visible = true ;
             List<Table> TableData = new List<Table>();
             XmlSerializer ser = new XmlSerializer(TableData.GetType());
             FileStream fs = new FileStream("Tables.xml", FileMode.Open);
@@ -120,13 +123,40 @@ namespace ScalarFunctions
 
         private void selectBtn_Click(object sender, EventArgs e)
         {
-            try {
-                PassData.colIndex = GridView_Table.SelectedColumns[0].Index;
-                PassData.colName = GridView_Table.Columns[PassData.colIndex].Name;
-                FunctionsForm functionsform = new FunctionsForm();
-                Hide();
-                functionsform.Show();
-            }catch(Exception ex) { MessageBox.Show("Please select a column.", "SelectColumn", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            if (CB_fnType.SelectedIndex==0)
+            {
+                if (GridView_Table.SelectedColumns.Count == 1)
+                {
+                    PassData.colIndex.Add(GridView_Table.SelectedColumns[0].Index);
+                    PassData.colName.Add(GridView_Table.Columns[PassData.colIndex[0]].Name);
+                    FunctionsForm functionsform = new FunctionsForm();
+                    Hide();
+                    functionsform.Show();
+                }
+                else
+                    MessageBox.Show("Please select a column.", "SelectColumn", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (CB_fnType.SelectedIndex==1)
+            {
+                if (GridView_Table.SelectedColumns.Count >= 1)
+                {
+                    for (int i=0;i< GridView_Table.SelectedColumns.Count; i++)
+                    {
+                        PassData.colIndex.Add(GridView_Table.SelectedColumns[i].Index);
+                        PassData.colName.Add(GridView_Table.Columns[PassData.colIndex[i]].Name);
+                    }
+                    FunctionsForm functionsform = new FunctionsForm();
+                    Hide();
+                    functionsform.Show();
+                }
+                else
+                    MessageBox.Show("Please select at least a column.", "SelectColumn", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CB_fnType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectBtn.Visible = true;
         }
 
         private void Load_FormClosed(object sender, FormClosedEventArgs e)

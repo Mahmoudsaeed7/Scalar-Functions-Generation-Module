@@ -33,6 +33,8 @@
             this.CB_TableName = new System.Windows.Forms.ComboBox();
             this.GridView_Table = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.CB_fnType = new System.Windows.Forms.ComboBox();
             this.selectBtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.GridView_Table)).BeginInit();
@@ -77,6 +79,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.CB_fnType);
             this.panel1.Controls.Add(this.selectBtn);
             this.panel1.Controls.Add(this.CB_TableName);
             this.panel1.Controls.Add(this.label1);
@@ -85,15 +89,37 @@
             this.panel1.Size = new System.Drawing.Size(757, 119);
             this.panel1.TabIndex = 3;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(233, 52);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(109, 20);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Function Type";
+            // 
+            // CB_fnType
+            // 
+            this.CB_fnType.FormattingEnabled = true;
+            this.CB_fnType.Items.AddRange(new object[] {
+            "Single Valued",
+            "Table Valued"});
+            this.CB_fnType.Location = new System.Drawing.Point(344, 51);
+            this.CB_fnType.Name = "CB_fnType";
+            this.CB_fnType.Size = new System.Drawing.Size(121, 21);
+            this.CB_fnType.TabIndex = 4;
+            this.CB_fnType.SelectedIndexChanged += new System.EventHandler(this.CB_fnType_SelectedIndexChanged);
+            // 
             // selectBtn
             // 
             this.selectBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.selectBtn.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selectBtn.ForeColor = System.Drawing.Color.SteelBlue;
-            this.selectBtn.Location = new System.Drawing.Point(286, 57);
+            this.selectBtn.Location = new System.Drawing.Point(299, 77);
             this.selectBtn.Margin = new System.Windows.Forms.Padding(2);
             this.selectBtn.Name = "selectBtn";
-            this.selectBtn.Size = new System.Drawing.Size(142, 33);
+            this.selectBtn.Size = new System.Drawing.Size(142, 28);
             this.selectBtn.TabIndex = 3;
             this.selectBtn.Text = "Select Function";
             this.selectBtn.UseVisualStyleBackColor = true;
@@ -138,6 +164,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button selectBtn;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox CB_fnType;
     }
 }
 
