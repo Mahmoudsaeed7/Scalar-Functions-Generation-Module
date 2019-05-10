@@ -43,14 +43,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(272, 89);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(181, 30);
+            this.label1.Location = new System.Drawing.Point(330, 28);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 23);
-            this.label1.Size = new System.Drawing.Size(94, 20);
+            this.label1.Size = new System.Drawing.Size(119, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Table Name";
             // 
@@ -59,50 +56,54 @@
             this.CB_TableName.FormattingEnabled = true;
             this.CB_TableName.Items.AddRange(new object[] {
             "Products"});
-            this.CB_TableName.Location = new System.Drawing.Point(408, 88);
-            this.CB_TableName.Margin = new System.Windows.Forms.Padding(4);
-            this.CB_TableName.Location = new System.Drawing.Point(281, 29);
+            this.CB_TableName.Location = new System.Drawing.Point(459, 28);
+            this.CB_TableName.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.CB_TableName.Name = "CB_TableName";
-            this.CB_TableName.Size = new System.Drawing.Size(121, 21);
+            this.CB_TableName.Size = new System.Drawing.Size(160, 24);
             this.CB_TableName.TabIndex = 1;
             this.CB_TableName.SelectedIndexChanged += new System.EventHandler(this.CB_TableName_SelectedIndexChanged);
             // 
             // GridView_Table
             // 
             this.GridView_Table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridView_Table.Location = new System.Drawing.Point(196, 20);
-            this.GridView_Table.Margin = new System.Windows.Forms.Padding(4);
-            this.GridView_Table.Location = new System.Drawing.Point(12, 75);
+            this.GridView_Table.Location = new System.Drawing.Point(303, 59);
+            this.GridView_Table.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.GridView_Table.Name = "GridView_Table";
             this.GridView_Table.ReadOnly = true;
-            this.GridView_Table.Size = new System.Drawing.Size(302, 214);
+            this.GridView_Table.Size = new System.Drawing.Size(403, 263);
             this.GridView_Table.TabIndex = 2;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.selectBtn);
             this.panel1.Controls.Add(this.CB_TableName);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(-16, -34);
+            this.panel1.Location = new System.Drawing.Point(-31, -9);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(909, 160);
+            this.panel1.Size = new System.Drawing.Size(1009, 146);
             this.panel1.TabIndex = 3;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.SteelBlue;
             this.panel2.Controls.Add(this.GridView_Table);
-            this.panel2.Location = new System.Drawing.Point(-27, 113);
+            this.panel2.Location = new System.Drawing.Point(-67, 127);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(971, 437);
+            this.panel2.Size = new System.Drawing.Size(1006, 639);
             this.panel2.TabIndex = 4;
             // 
             // selectBtn
             // 
-            this.selectBtn.Location = new System.Drawing.Point(375, 75);
-            this.selectBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.selectBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.selectBtn.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectBtn.ForeColor = System.Drawing.Color.SteelBlue;
+            this.selectBtn.Location = new System.Drawing.Point(381, 70);
+            this.selectBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.selectBtn.Name = "selectBtn";
-            this.selectBtn.Size = new System.Drawing.Size(82, 19);
+            this.selectBtn.Size = new System.Drawing.Size(190, 41);
             this.selectBtn.TabIndex = 3;
             this.selectBtn.Text = "Select Function";
             this.selectBtn.UseVisualStyleBackColor = true;
@@ -111,17 +112,13 @@
             // 
             // Load
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(867, 534);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.ClientSize = new System.Drawing.Size(488, 353);
-            this.Controls.Add(this.selectBtn);
-            this.Controls.Add(this.GridView_Table);
-            this.Controls.Add(this.CB_TableName);
-            this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Load";
             this.Text = "Load";
             this.Load += new System.EventHandler(this.Load_Load);

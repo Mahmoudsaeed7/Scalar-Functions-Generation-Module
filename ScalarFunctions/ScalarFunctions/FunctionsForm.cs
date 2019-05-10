@@ -87,5 +87,12 @@ namespace ScalarFunctions
         {
             Application.Exit();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form1 fr = new Form1();
+            Hide();
+            fr.Show();
+        }
     }
 }
