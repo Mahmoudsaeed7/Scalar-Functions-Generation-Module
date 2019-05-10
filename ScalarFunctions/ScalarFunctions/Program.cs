@@ -20,4 +20,10 @@ namespace ScalarFunctions
             Application.Run(new Form1());
         }
     }
+    public class PassData
+    {
+        public static string colName;
+        public static int colIndex;
+        public static string tableName;
+    }
 }

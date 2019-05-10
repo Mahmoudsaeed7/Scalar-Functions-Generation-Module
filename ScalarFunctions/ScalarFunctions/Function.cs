@@ -42,9 +42,11 @@ namespace ScalarFunctions
         
         public Functions(string tableName, string columnHeader)
         {
+            tables = new List<Table>();
             FileStream file = new FileStream("Tables.xml", FileMode.Open);
             XmlSerializer ser = new XmlSerializer(tables.GetType());
             tables = (List<Table>)ser.Deserialize(file);
+            file.Close();
 
             for(int i = 0; i < tables.Count; i++)
             {

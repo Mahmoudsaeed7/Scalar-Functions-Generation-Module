@@ -34,6 +34,7 @@
             this.GridView_Table = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.selectBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.GridView_Table)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -45,8 +46,11 @@
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(272, 89);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(181, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(128, 23);
+            this.label1.Size = new System.Drawing.Size(94, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Table Name";
             // 
@@ -57,8 +61,9 @@
             "Products"});
             this.CB_TableName.Location = new System.Drawing.Point(408, 88);
             this.CB_TableName.Margin = new System.Windows.Forms.Padding(4);
+            this.CB_TableName.Location = new System.Drawing.Point(281, 29);
             this.CB_TableName.Name = "CB_TableName";
-            this.CB_TableName.Size = new System.Drawing.Size(160, 24);
+            this.CB_TableName.Size = new System.Drawing.Size(121, 21);
             this.CB_TableName.TabIndex = 1;
             this.CB_TableName.SelectedIndexChanged += new System.EventHandler(this.CB_TableName_SelectedIndexChanged);
             // 
@@ -67,8 +72,10 @@
             this.GridView_Table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridView_Table.Location = new System.Drawing.Point(196, 20);
             this.GridView_Table.Margin = new System.Windows.Forms.Padding(4);
+            this.GridView_Table.Location = new System.Drawing.Point(12, 75);
             this.GridView_Table.Name = "GridView_Table";
-            this.GridView_Table.Size = new System.Drawing.Size(536, 325);
+            this.GridView_Table.ReadOnly = true;
+            this.GridView_Table.Size = new System.Drawing.Size(302, 214);
             this.GridView_Table.TabIndex = 2;
             // 
             // panel1
@@ -90,15 +97,31 @@
             this.panel2.Size = new System.Drawing.Size(971, 437);
             this.panel2.TabIndex = 4;
             // 
+            // selectBtn
+            // 
+            this.selectBtn.Location = new System.Drawing.Point(375, 75);
+            this.selectBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.selectBtn.Name = "selectBtn";
+            this.selectBtn.Size = new System.Drawing.Size(82, 19);
+            this.selectBtn.TabIndex = 3;
+            this.selectBtn.Text = "Select Function";
+            this.selectBtn.UseVisualStyleBackColor = true;
+            this.selectBtn.Visible = false;
+            this.selectBtn.Click += new System.EventHandler(this.selectBtn_Click);
+            // 
             // Load
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(867, 534);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(488, 353);
+            this.Controls.Add(this.selectBtn);
+            this.Controls.Add(this.GridView_Table);
+            this.Controls.Add(this.CB_TableName);
+            this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Load";
             this.Text = "Load";
             this.Load += new System.EventHandler(this.Load_Load);
@@ -117,6 +140,7 @@
         private System.Windows.Forms.DataGridView GridView_Table;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button selectBtn;
     }
 }
 
