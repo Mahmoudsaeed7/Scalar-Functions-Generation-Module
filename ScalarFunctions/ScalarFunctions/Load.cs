@@ -21,6 +21,8 @@ namespace ScalarFunctions
 
         private void Load_Load(object sender, EventArgs e)
         {
+            PassData.colIndex.Clear();
+            PassData.colName.Clear();
             if (!File.Exists("Tables.xml") && !File.Exists("Functions.xml"))
             {
                 Random random = new Random();
@@ -31,6 +33,7 @@ namespace ScalarFunctions
 
                 Column price = new Column("Price", "double");
                 Column id = new Column("id", "int");
+                Column Year = new Column("Model Year", "int");
 
                 Function sumInt = new Function("SumInt", rowsCount);
                 Function sumDouble = new Function("SumDouble", rowsCount);
@@ -62,8 +65,13 @@ namespace ScalarFunctions
                 {
                     id.values.Insert(i, random.Next(1, 1000).ToString());
                 }
+                for (int i = 0; i < rowsCount; i++)
+                {
+                    Year.values.Insert(i, random.Next(1998, 2019).ToString());
+                }
                 table.columns.Add(price);
                 table.columns.Add(id);
+                table.columns.Add(Year);
 
                 tables.Add(table);
                 FileStream fileStream = new FileStream("Tables.xml", FileMode.Create);
@@ -80,7 +88,6 @@ namespace ScalarFunctions
         private void CB_TableName_SelectedIndexChanged(object sender, EventArgs e)
         {
             PassData.tableName = CB_TableName.SelectedItem.ToString();
-            selectBtn.Visible = true ;
             List<Table> TableData = new List<Table>();
             XmlSerializer ser = new XmlSerializer(TableData.GetType());
             FileStream fs = new FileStream("Tables.xml", FileMode.Open);
@@ -112,13 +119,40 @@ namespace ScalarFunctions
 
         private void selectBtn_Click(object sender, EventArgs e)
         {
-            try {
-                PassData.colIndex = GridView_Table.SelectedColumns[0].Index;
-                PassData.colName = GridView_Table.Columns[PassData.colIndex].Name;
-                FunctionsForm functionsform = new FunctionsForm();
-                Hide();
-                functionsform.Show();
-            }catch(Exception ex) { MessageBox.Show("Please select a column.", "SelectColumn", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            if (CB_fnType.SelectedIndex==0)
+            {
+                if (GridView_Table.SelectedColumns.Count == 1)
+                {
+                    PassData.colIndex.Add(GridView_Table.SelectedColumns[0].Index);
+                    PassData.colName.Add(GridView_Table.Columns[PassData.colIndex[0]].Name);
+                    FunctionsForm functionsform = new FunctionsForm();
+                    Hide();
+                    functionsform.Show();
+                }
+                else
+                    MessageBox.Show("Please select a column.", "SelectColumn", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (CB_fnType.SelectedIndex==1)
+            {
+                if (GridView_Table.SelectedColumns.Count >= 1)
+                {
+                    for (int i=0;i< GridView_Table.SelectedColumns.Count; i++)
+                    {
+                        PassData.colIndex.Add(GridView_Table.SelectedColumns[i].Index);
+                        PassData.colName.Add(GridView_Table.Columns[PassData.colIndex[i]].Name);
+                    }
+                    FunctionsForm functionsform = new FunctionsForm();
+                    Hide();
+                    functionsform.Show();
+                }
+                else
+                    MessageBox.Show("Please select at least a column.", "SelectColumn", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CB_fnType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectBtn.Visible = true;
         }
     }
 }

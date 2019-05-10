@@ -21,7 +21,7 @@ namespace ScalarFunctions
 
         private void FunctionsForm_Load(object sender, EventArgs e)
         {
-            label1.Text = PassData.colName.ToString();
+            label1.Text = PassData.colName[0].ToString();
             List<Function> functions = new List<Function>();
             FileStream fs = new FileStream("Functions.xml", FileMode.Open);
             XmlSerializer ser = new XmlSerializer(functions.GetType());
@@ -40,7 +40,7 @@ namespace ScalarFunctions
         {
             try
             {
-                Functions functions = new Functions(PassData.tableName, PassData.colName);
+                Functions functions = new Functions(PassData.tableName, PassData.colName[0]);
                 int rowIndex = GridView_Table.SelectedRows[0].Index;
                 string rowName = GridView_Table.Rows[rowIndex].Cells[0].Value.ToString();
                 switch (rowName)
@@ -93,6 +93,11 @@ namespace ScalarFunctions
             Form1 fr = new Form1();
             Hide();
             fr.Show();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
