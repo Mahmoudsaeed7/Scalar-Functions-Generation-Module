@@ -27,10 +27,15 @@ namespace ScalarFunctions
                 int rowsCount = 10;
 
                 Table table = new Table("Products");
+                Table table2 = new Table("Company");
                 List<Table> tables = new List<Table>();
 
                 Column price = new Column("Price", "double");
                 Column id = new Column("id", "int");
+                Column compName = new Column("Name", "string");
+                Column startYear = new Column("Start Year", "int");
+                Column profit = new Column("Profit", "double");
+                Column employees = new Column("Employees/Department", "int");
 
                 Function sumInt = new Function("SumInt", rowsCount);
                 Function sumDouble = new Function("SumDouble", rowsCount);
@@ -52,20 +57,23 @@ namespace ScalarFunctions
                 maxInt.setDataTypes("int");
                 minDouble.setDataTypes("double");
                 maxDouble.setDataTypes("double");
-
                 functions.AddRange(new List<Function>() { minDouble, maxDouble, maxInt,minInt, count,Avg, sumInt, sumDouble });
+
+                compName.values.AddRange(new string[] {"Google", "Microsoft", "Facebook", "Twitter", "Whatsapp", "Messenger", "FCIS", "ASU", "Vodafone", "Orange"});
                 for (int i = 0; i < rowsCount; i++)
                 {
-                    price.values.Insert(i, Math.Round(random.NextDouble() * 100, 3).ToString());
+                    price.values.Add(Math.Round(random.NextDouble() * 100, 3).ToString());
+                    id.values.Add(random.Next(1, 1000).ToString());
+                    startYear.values.Add(random.Next(1990, 2015).ToString());
+                    profit.values.Add(Math.Round(random.NextDouble() * 1234567, 3).ToString());
+                    employees.values.Add(random.Next(1000, 10000).ToString());
                 }
-                for (int i = 0; i < rowsCount; i++)
-                {
-                    id.values.Insert(i, random.Next(1, 1000).ToString());
-                }
-                table.columns.Add(price);
-                table.columns.Add(id);
+                table.columns.AddRange(new List<Column>() { price , id });
+                table2.columns.AddRange(new List<Column>() { compName, startYear, profit, employees });
 
                 tables.Add(table);
+                tables.Add(table2);
+
                 FileStream fileStream = new FileStream("Tables.xml", FileMode.Create);
                 XmlSerializer ser = new XmlSerializer(tables.GetType());
                 ser.Serialize(fileStream, tables);
@@ -119,6 +127,11 @@ namespace ScalarFunctions
                 Hide();
                 functionsform.Show();
             }catch(Exception ex) { MessageBox.Show("Please select a column.", "SelectColumn", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+
+        private void Load_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
