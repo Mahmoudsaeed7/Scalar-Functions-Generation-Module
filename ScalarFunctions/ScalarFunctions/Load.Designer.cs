@@ -31,6 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.CB_TableName = new System.Windows.Forms.ComboBox();
             this.GridView_Table = new System.Windows.Forms.DataGridView();
+            this.selectBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.GridView_Table)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,14 +61,27 @@
             this.GridView_Table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridView_Table.Location = new System.Drawing.Point(12, 75);
             this.GridView_Table.Name = "GridView_Table";
+            this.GridView_Table.ReadOnly = true;
             this.GridView_Table.Size = new System.Drawing.Size(402, 264);
             this.GridView_Table.TabIndex = 2;
+            // 
+            // selectBtn
+            // 
+            this.selectBtn.Location = new System.Drawing.Point(464, 29);
+            this.selectBtn.Name = "selectBtn";
+            this.selectBtn.Size = new System.Drawing.Size(110, 23);
+            this.selectBtn.TabIndex = 3;
+            this.selectBtn.Text = "Select Function";
+            this.selectBtn.UseVisualStyleBackColor = true;
+            this.selectBtn.Visible = false;
+            this.selectBtn.Click += new System.EventHandler(this.selectBtn_Click);
             // 
             // Load
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(650, 434);
+            this.Controls.Add(this.selectBtn);
             this.Controls.Add(this.GridView_Table);
             this.Controls.Add(this.CB_TableName);
             this.Controls.Add(this.label1);
@@ -85,6 +99,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox CB_TableName;
         private System.Windows.Forms.DataGridView GridView_Table;
+        private System.Windows.Forms.Button selectBtn;
     }
 }
 
