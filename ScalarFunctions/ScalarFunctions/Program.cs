@@ -23,7 +23,11 @@ namespace ScalarFunctions
     public class PassData
     {
         public static List<string> colName= new List<string>();
-        public static List<int> colIndex= new List<int>();
         public static string tableName;
+        public static List<Column> columns;
+        public static bool singleValue = true ;
+        public static bool isNumber = true ;
+        public static Column selColumn = null;
+        public static string oper;
     }
 }

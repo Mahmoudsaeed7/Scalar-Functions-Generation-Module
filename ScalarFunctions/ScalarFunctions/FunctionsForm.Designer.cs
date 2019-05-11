@@ -34,6 +34,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.conditionTxt = new System.Windows.Forms.TextBox();
+            this.operation = new System.Windows.Forms.ComboBox();
+            this.colNames = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.GridView_Table)).BeginInit();
@@ -49,6 +52,7 @@
             this.GridView_Table.ReadOnly = true;
             this.GridView_Table.Size = new System.Drawing.Size(402, 264);
             this.GridView_Table.TabIndex = 3;
+            this.GridView_Table.Visible = false;
             // 
             // applyBtn
             // 
@@ -85,14 +89,44 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.conditionTxt);
+            this.panel1.Controls.Add(this.operation);
+            this.panel1.Controls.Add(this.colNames);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(-13, -4);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(710, 122);
             this.panel1.TabIndex = 7;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // conditionTxt
+            // 
+            this.conditionTxt.Location = new System.Drawing.Point(443, 43);
+            this.conditionTxt.Name = "conditionTxt";
+            this.conditionTxt.Size = new System.Drawing.Size(100, 20);
+            this.conditionTxt.TabIndex = 9;
+            this.conditionTxt.Visible = false;
+            // 
+            // operation
+            // 
+            this.operation.FormattingEnabled = true;
+            this.operation.Location = new System.Drawing.Point(285, 43);
+            this.operation.Name = "operation";
+            this.operation.Size = new System.Drawing.Size(121, 21);
+            this.operation.TabIndex = 8;
+            this.operation.Visible = false;
+            this.operation.SelectedIndexChanged += new System.EventHandler(this.operation_SelectedIndexChanged);
+            // 
+            // colNames
+            // 
+            this.colNames.FormattingEnabled = true;
+            this.colNames.Location = new System.Drawing.Point(122, 43);
+            this.colNames.Name = "colNames";
+            this.colNames.Size = new System.Drawing.Size(121, 21);
+            this.colNames.TabIndex = 7;
+            this.colNames.Visible = false;
+            this.colNames.SelectedIndexChanged += new System.EventHandler(this.colNames_SelectedIndexChanged);
             // 
             // panel2
             // 
@@ -101,7 +135,7 @@
             this.panel2.Controls.Add(this.GridView_Table);
             this.panel2.Controls.Add(this.applyBtn);
             this.panel2.Location = new System.Drawing.Point(-15, 92);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(682, 344);
             this.panel2.TabIndex = 8;
@@ -112,7 +146,7 @@
             this.button1.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(339, 288);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(117, 34);
             this.button1.TabIndex = 5;
@@ -150,5 +184,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox colNames;
+        private System.Windows.Forms.ComboBox operation;
+        private System.Windows.Forms.TextBox conditionTxt;
     }
 }

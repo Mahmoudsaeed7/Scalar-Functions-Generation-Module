@@ -21,7 +21,6 @@ namespace ScalarFunctions
 
         private void Load_Load(object sender, EventArgs e)
         {
-            PassData.colIndex.Clear();
             PassData.colName.Clear();
             if (!File.Exists("Tables.xml") && !File.Exists("Functions.xml"))
             {
@@ -91,6 +90,9 @@ namespace ScalarFunctions
 
         private void CB_TableName_SelectedIndexChanged(object sender, EventArgs e)
         {
+            GridView_Table.Columns.Clear();
+            GridView_Table.Rows.Clear();
+            GridView_Table.SelectionMode = DataGridViewSelectionMode.CellSelect;
             PassData.tableName = CB_TableName.SelectedItem.ToString();
             List<Table> TableData = new List<Table>();
             XmlSerializer ser = new XmlSerializer(TableData.GetType());
@@ -101,6 +103,7 @@ namespace ScalarFunctions
                 if (CB_TableName.SelectedItem.Equals(T.name))
                 {
                     List<Column> C = T.columns;
+                    PassData.columns = new List<Column>(C);
                     for (int i=0;i<T.columns.Count;i++)
                     {
                         string C_name = C[i].header;
@@ -127,8 +130,9 @@ namespace ScalarFunctions
             {
                 if (GridView_Table.SelectedColumns.Count == 1)
                 {
-                    PassData.colIndex.Add(GridView_Table.SelectedColumns[0].Index);
-                    PassData.colName.Add(GridView_Table.Columns[PassData.colIndex[0]].Name);
+                    PassData.singleValue = true;
+                    int ind = GridView_Table.SelectedColumns[0].Index;
+                    PassData.colName.Add(GridView_Table.Columns[ind].Name);
                     FunctionsForm functionsform = new FunctionsForm();
                     Hide();
                     functionsform.Show();
@@ -140,10 +144,11 @@ namespace ScalarFunctions
             {
                 if (GridView_Table.SelectedColumns.Count >= 1)
                 {
+                    PassData.singleValue = false;
                     for (int i=0;i< GridView_Table.SelectedColumns.Count; i++)
                     {
-                        PassData.colIndex.Add(GridView_Table.SelectedColumns[i].Index);
-                        PassData.colName.Add(GridView_Table.Columns[PassData.colIndex[i]].Name);
+                        int ind = (GridView_Table.SelectedColumns[i].Index);
+                        PassData.colName.Add(GridView_Table.Columns[ind].Name);
                     }
                     FunctionsForm functionsform = new FunctionsForm();
                     Hide();
