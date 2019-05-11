@@ -172,10 +172,10 @@ namespace ScalarFunctions
             GridView_Table.Visible = true;
             GridView_Table.Columns.Clear();
             GridView_Table.Rows.Clear();
-            int rows = 0;
+            int rows = 0, cols = 0;
             for(int i= 0;i < PassData.columns.Count;i++)
             {
-                if(PassData.colName.FindIndex(0,x => x == PassData.columns[i].header) != -1)
+                if (PassData.colName.FindIndex(0,x => x == PassData.columns[i].header) != -1)
                 {
                     rows = 0;
                     GridView_Table.Columns.Add(PassData.columns[i].header, PassData.columns[i].header);
@@ -183,10 +183,11 @@ namespace ScalarFunctions
                     {
                         if(inds.FindIndex(0, x => x == j) != -1) {
                             GridView_Table.Rows.Add();
-                            GridView_Table.Rows[rows++].Cells[i].Value = PassData.columns[i].values[j];
+                            GridView_Table.Rows[rows++].Cells[cols].Value = PassData.columns[i].values[j];
                         }
                     }
-                }
+                    cols++;
+                } 
             }
         }
 
